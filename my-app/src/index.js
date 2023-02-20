@@ -7,26 +7,27 @@ import reportWebVitals from "./reportWebVitals";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 class Clock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { date: new Date() };
+  }
+
   render() {
     return (
       <div>
         <h1>Hello</h1>
-        <h2>It is {this.props.date.toLocaleTimeString()}.</h2>
+        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
       </div>
     );
   }
 }
 
-function tick() {
-  root.render(
-    <React.StrictMode>
-      <Clock date={new Date()} />
-      <App />
-    </React.StrictMode>
-  );
-}
-
-setInterval(tick, 1000);
+root.render(
+  <React.StrictMode>
+    <Clock />
+    <App />
+  </React.StrictMode>
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
